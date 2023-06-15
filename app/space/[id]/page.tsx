@@ -227,7 +227,7 @@ export default function Page() {
                 <h1 className="pl-2 pb-1">Claim Space</h1>
                 <div className="join">
                   <input
-                    className="input input-bordered join-item"
+                    className="input input-bordered join-item w-[200px]"
                     placeholder="Deposit"
                     onChange={(event) => setAmount(event?.target.value)}
                   />
