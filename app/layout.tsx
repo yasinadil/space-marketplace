@@ -1,6 +1,5 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import { Providers } from "./GlobalRedux/provider";
 import { Inter } from "next/font/google";
 import { ThirdWebProviderWrapper } from "./ThirdWeb/thirdwebprovider";
 
@@ -20,10 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} cz-shortcut-listen={"true"}>
         <ThirdWebProviderWrapper>
-          <Providers>
-            <Navbar />
-            {children}
-          </Providers>
+          <Navbar />
+          {children}
         </ThirdWebProviderWrapper>
       </body>
     </html>

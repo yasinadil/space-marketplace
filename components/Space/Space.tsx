@@ -1,27 +1,34 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import SpaceCard from "../SpaceCard/SpaceCard";
+import { useState } from "react";
 
-// import { ethers } from "ethers";
-// import { spaceMarketplaceAddress } from "../Config/Config";
+import { ethers } from "ethers";
+import { spaceMarketplaceAddress } from "../Config/Config";
 
-// const spaceABI = require("../ABI/spaceABI.json");
-import { useAppSelector } from "@/app/GlobalRedux/store";
+const spaceABI = require("../ABI/spaceABI.json");
 
-export default async function Space() {
-  const allSpaces = useAppSelector((state) => state.spaces.spaces);
-  //   const provider = new ethers.providers.JsonRpcProvider(
-  //     "https://polygon-mumbai.g.alchemy.com/v2/2TI0SeKoUJzCRBNaFnTGaV9B7uvkxnsy"
-  //   );
+export default function Space() {
+  // const allSpaces = useAppSelector((state) => state.spaces.spaces);
+  const [allSpaces, setAllSpaces] = useState([]);
 
-  //   const spaceContract = new ethers.Contract(
-  //     spaceMarketplaceAddress,
-  //     spaceABI,
-  //     provider
-  //   );
+  useEffect(() => {
+    async function loadSpaces() {
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://polygon-mumbai.g.alchemy.com/v2/2TI0SeKoUJzCRBNaFnTGaV9B7uvkxnsy"
+      );
 
-  //   const allSpaces = await spaceContract.getAllClaimedSpaces();
-  //   console.log(allSpaces);
+      const spaceContract = new ethers.Contract(
+        spaceMarketplaceAddress,
+        spaceABI,
+        provider
+      );
+
+      const allSpaces = await spaceContract.getAllClaimedSpaces();
+      setAllSpaces(allSpaces);
+    }
+    loadSpaces();
+  }, []);
 
   return (
     <div className="pt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 mx-10">
