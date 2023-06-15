@@ -48,11 +48,11 @@ export default async function SpaceCard(props: any) {
         <div className="card-actions justify-end pt-2">
           <div className="badge border-0 tooltip flex" data-tip="offer">
             <Image className="w-7 pr-1" src={offer} alt="offer" />
-            {ethers.utils.formatEther(props.balance.toString())}
+            {ethers.utils.formatEther(props.highestOffer.toString())}
           </div>
           <div className="badge border-0 tooltip flex" data-tip="balance">
             <Image className="w-7 pr-1" src={polygon} alt="balance" />
-            {ethers.utils.formatEther(props.highestOffer.toString())}
+            {ethers.utils.formatEther(props.balance.toString())}
           </div>
         </div>
       </div>
