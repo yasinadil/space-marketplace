@@ -104,13 +104,17 @@ export default function Page() {
         setSpaceBalance(balance);
         setSpaceHighestOffer(highestOffer);
         setSpaceHighestOfferer(highestOfferer);
-        setSpaceUri(spaceUri);
+        if (spaceUri == "") {
+          setSpaceUri("nothing");
+        } else {
+          setSpaceUri(spaceUri);
+        }
       } else {
         setSpaceExists("unclaimed");
         setSpaceOwner("unowned");
         setSpaceBalance("0");
         setSpaceHighestOffer("0");
-        setSpaceHighestOfferer(highestOfferer);
+        setSpaceHighestOfferer("None");
         setSpaceUri("nothing");
       }
     }
@@ -145,27 +149,29 @@ export default function Page() {
           {spaceID}
         </h1>
         <div className="flex flex-col gap-y-4">
-          {spaceUri == "loading..." && (
-            <div className="animate-pulse flex space-x-4">
-              <div className="rounded-lg bg-slate-700 w-[500px] h-[300px]"></div>
-            </div>
-          )}
+          <div className="h-[300px]">
+            {spaceUri == "loading..." && (
+              <div className="animate-pulse flex space-x-4">
+                <div className="rounded-lg bg-slate-700 w-[500px] h-[300px]"></div>
+              </div>
+            )}
 
-          {spaceUri == "nothing" && (
-            <Image
-              className="w-[300px] xl:w-[700px] rounded-2xl"
-              src={spaceImg}
-              alt="spaceImage"
-            />
-          )}
+            {spaceUri == "nothing" && (
+              <Image
+                className="w-[300px] xl:w-[700px] h-[300px] rounded-2xl"
+                src={spaceImg}
+                alt="spaceImage"
+              />
+            )}
 
-          {spaceUri != "nothing" && spaceUri != "loading..." && (
-            <img
-              className="w-[300px] h-[300px]"
-              src={spaceUri}
-              alt="spaceImage"
-            />
-          )}
+            {spaceUri != "nothing" && spaceUri != "loading..." && (
+              <img
+                className="max-w-[300px] max-h-[300px]"
+                src={spaceUri}
+                alt="spaceImage"
+              />
+            )}
+          </div>
 
           <div className="flex flex-col gap-y-4 my-5">
             <div className="border-b border-black pb-2 flex justify-between">
@@ -669,7 +675,7 @@ export default function Page() {
                       ])
                     }
                     onSuccess={() =>
-                      toast.success("Successfully claimed your space!", {
+                      toast.success("Changed NFT to display on Space", {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,

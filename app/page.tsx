@@ -5,7 +5,11 @@ export default function Home() {
   return (
     <main className="">
       <Suspense
-        fallback={<p className="text-5xl font-bold">Loading Spaces...</p>}
+        fallback={
+          <div className="flex justify-center items-center min-h-screen">
+            <span className="loading loading-dots loading-lg"></span>
+          </div>
+        }
       >
         <Space />
       </Suspense>
