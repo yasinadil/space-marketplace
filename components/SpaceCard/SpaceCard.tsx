@@ -16,11 +16,9 @@ export default async function SpaceCard(props: any) {
       response.json()
     );
     let TokenImage = TokenMetadata.image;
-    // if (TokenImage.startsWith("ipfs://")) {
-    //   TokenImage = `https://w3s.link/ipfs/${
-    //     TokenImage.split("ipfs://")[1]
-    //   }`;
-    // }
+    if (TokenImage.startsWith("ipfs://")) {
+      TokenImage = `https://w3s.link/ipfs/${TokenImage.split("ipfs://")[1]}`;
+    }
     spaceUri = TokenImage;
   }
   return (

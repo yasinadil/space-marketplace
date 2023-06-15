@@ -91,11 +91,11 @@ export default function Page() {
             response.json()
           );
           let TokenImage = TokenMetadata.image;
-          // if (TokenImage.startsWith("ipfs://")) {
-          //   TokenImage = `https://w3s.link/ipfs/${
-          //     TokenImage.split("ipfs://")[1]
-          //   }`;
-          // }
+          if (TokenImage.startsWith("ipfs://")) {
+            TokenImage = `https://w3s.link/ipfs/${
+              TokenImage.split("ipfs://")[1]
+            }`;
+          }
           spaceUri = TokenImage;
         }
 
@@ -546,7 +546,7 @@ export default function Page() {
                   onChange={(event) => setOfferAmount(event.target.value)}
                 />
                 <input
-                  className="input input-bordered join-item"
+                  className="input input-bordered join-item w-[200px]"
                   placeholder="Subsciption Offer"
                   onChange={(event) => setSubsOffer(event.target.value)}
                 />
@@ -657,7 +657,7 @@ export default function Page() {
                     onChange={(event) => setContractAddress(event.target.value)}
                   />
                   <input
-                    className="input input-bordered join-item"
+                    className="input input-bordered join-item w-[200px]"
                     placeholder="Token ID"
                     onChange={(event) => setTokenId(event.target.value)}
                   />
