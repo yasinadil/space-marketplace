@@ -152,7 +152,7 @@ export default function Page() {
           <div className="h-[300px]">
             {spaceUri == "loading..." && (
               <div className="animate-pulse flex space-x-4">
-                <div className="rounded-lg bg-slate-700 w-[500px] h-[300px]"></div>
+                <div className="rounded-lg bg-slate-700 w-[300px] h-[300px]"></div>
               </div>
             )}
 
