@@ -217,12 +217,10 @@ export default function Page() {
               <h1 className="text-lg w-44 p-1 text-black rounded-xl text-left">
                 Highest Offerer
               </h1>
-              {highestOfferer != "None" ? (
+              {highestOfferer != "None" && (
                 <h1 className="font-semibold block md:hidden">
                   {truncateEthAddress(highestOfferer)}
                 </h1>
-              ) : (
-                <h1 className="font-semibold">{highestOfferer}</h1>
               )}
               <h1 className="font-semibold hidden md:block">
                 {highestOfferer}
