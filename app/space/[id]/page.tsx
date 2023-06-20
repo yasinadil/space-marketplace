@@ -759,7 +759,7 @@ export default function Page() {
                 theme="dark"
                 // Call the name of your smart contract function
                 action={(contract) => contract.call("retractOffer", [spaceID])}
-                onSuccess={() =>
+                onSuccess={() => {
                   toast.success("Offer Retracted", {
                     position: "top-center",
                     autoClose: 5000,
@@ -769,8 +769,10 @@ export default function Page() {
                     draggable: true,
                     progress: undefined,
                     theme: "dark",
-                  })
-                }
+                  });
+                  setSpaceHighestOffer("0");
+                  setSpaceHighestOfferer("None");
+                }}
                 onError={(error: any) =>
                   toast.error(error.reason, {
                     position: "top-center",
