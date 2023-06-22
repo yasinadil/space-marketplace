@@ -56,7 +56,7 @@ export default function Page() {
   useEffect(() => {
     async function loadSpace() {
       const provider = new ethers.providers.JsonRpcProvider(
-        "https://polygon-mumbai.g.alchemy.com/v2/2TI0SeKoUJzCRBNaFnTGaV9B7uvkxnsy"
+        process.env.NEXT_PUBLIC_ALCHEMY_KEY!
       );
 
       const spaceContract = new ethers.Contract(
