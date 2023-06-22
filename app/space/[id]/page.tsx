@@ -74,7 +74,17 @@ export default function Page() {
         const spaceNo = currSpace.spaceNo;
 
         const owner = currSpace.owner;
-        const balance = ethers.utils.formatEther(currSpace.balance.toString());
+        const _balance = await spaceContract.getRemainingBalance(
+          Number(spaceID)
+        );
+        let balance;
+        if (Number(_balance) > 0) {
+          balance = Number(
+            ethers.utils.formatEther(_balance.toString())
+          ).toFixed(8);
+        } else {
+          balance = ethers.utils.formatEther(_balance.toString());
+        }
         const highestOffer = ethers.utils.formatEther(
           currSpace.highestOffer.toString()
         );
@@ -145,7 +155,7 @@ export default function Page() {
         </div>
 
         <h1 className="font-semibold text-2xl mb-6">
-          Space #{Number(spaceID) < 10 && "0"}
+          #{Number(spaceID) < 10 && "0"}
           {spaceID}
         </h1>
         <div className="flex flex-col gap-y-4">
@@ -202,7 +212,7 @@ export default function Page() {
               <h1 className="text-lg w-44 p-1 text-black rounded-xl text-left">
                 Balance
               </h1>
-              <h1 className="font-semibold">{balance} MATIC</h1>
+              <h1 className="font-semibold">{balance} WMATIC</h1>
             </div>
 
             <div className="flex justify-between border-b border-black pb-2">
@@ -210,7 +220,7 @@ export default function Page() {
               <h1 className="text-lg w-44 p-1 text-black rounded-xl text-left">
                 Highest Offer
               </h1>
-              <h1 className="font-semibold">{highestOffer} MATIC</h1>
+              <h1 className="font-semibold">{highestOffer} WMATIC</h1>
             </div>
 
             <div className="flex justify-between">
@@ -235,7 +245,7 @@ export default function Page() {
                 <div className="join">
                   <input
                     className="input input-bordered join-item w-[200px]"
-                    placeholder="Deposit"
+                    placeholder="Initial Deposit"
                     onChange={(event) => setAmount(event?.target.value)}
                   />
                   {approved ? (
@@ -554,7 +564,7 @@ export default function Page() {
                 />
                 <input
                   className="input input-bordered join-item w-[200px]"
-                  placeholder="Subsciption Offer"
+                  placeholder="Initial Deposit"
                   onChange={(event) => setSubsOffer(event.target.value)}
                 />
                 {makeOfferApproved ? (

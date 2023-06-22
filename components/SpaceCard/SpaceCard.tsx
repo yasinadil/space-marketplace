@@ -38,7 +38,7 @@ export default async function SpaceCard(props: any) {
             Space #{props.id < 10 && "0"}
             {props.id}
           </Link>
-          <div className="badge badge-secondary">
+          <div className="badge badge-primary">
             {props.exists ? "CLAIMED" : "UNCLAIMED"}
           </div>
         </h2>
@@ -50,7 +50,11 @@ export default async function SpaceCard(props: any) {
           </div>
           <div className="badge border-0 tooltip flex" data-tip="balance">
             <Image className="w-7 pr-1" src={polygon} alt="balance" />
-            {ethers.utils.formatEther(props.balance.toString())}
+            {Number(props.balance) > 0
+              ? Number(
+                  ethers.utils.formatEther(props.balance.toString())
+                ).toFixed(8)
+              : ethers.utils.formatEther(props.balance.toString())}
           </div>
         </div>
       </div>

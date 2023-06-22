@@ -11,6 +11,7 @@ const spaceABI = require("../ABI/spaceABI.json");
 export default function Space() {
   // const allSpaces = useAppSelector((state) => state.spaces.spaces);
   const [allSpaces, setAllSpaces] = useState([]);
+  const [allBalances, setAllBalances] = useState([]);
 
   useEffect(() => {
     async function loadSpaces() {
@@ -23,6 +24,11 @@ export default function Space() {
         spaceABI,
         provider
       );
+
+      const _balances = await spaceContract.getCurrentRemainingBalances();
+      console.log(_balances);
+
+      setAllBalances(_balances);
 
       const allSpaces = await spaceContract.getAllClaimedSpaces();
       setAllSpaces(allSpaces);
@@ -39,7 +45,7 @@ export default function Space() {
             id={index + 1}
             exists={space.exists}
             owner={space.owner}
-            balance={space.balance}
+            balance={allBalances[index]}
             highestOffer={space.highestOffer}
             highestOfferer={space.highestOfferer}
             spaceUri={space.spaceUri}
