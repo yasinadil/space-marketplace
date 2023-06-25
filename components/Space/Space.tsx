@@ -26,7 +26,6 @@ export default function Space() {
       );
 
       const _balances = await spaceContract.getCurrentRemainingBalances();
-      console.log(_balances);
 
       setAllBalances(_balances);
 
@@ -37,7 +36,7 @@ export default function Space() {
   }, []);
 
   return (
-    <div className="pt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 mx-10 pb-10">
+    <div className="pt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 mx-10 pb-10">
       {allSpaces.map((space: any, index: number) => {
         return (
           <SpaceCard

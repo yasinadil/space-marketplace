@@ -34,7 +34,7 @@ export default async function SpaceCard(props: any) {
           )}
         </Link>
       </figure>
-      <div className="card-body">
+      <div className="card-body py-2">
         <div className="flex flex-row justify-around items-center">
           <div className="flex justify-around items-center gap-2">
             <h2 className="card-title">
