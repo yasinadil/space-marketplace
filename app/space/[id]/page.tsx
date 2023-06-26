@@ -30,7 +30,8 @@ export default function Page() {
   const params = useParams();
   const address = useAddress();
 
-  let spaceID = params.id;
+  let spaceID = Number(params.id);
+  console.log(spaceID);
 
   const [exists, setSpaceExists] = useState("loading...");
   const [owner, setSpaceOwner] = useState("loading...");
@@ -65,18 +66,13 @@ export default function Page() {
         provider
       );
 
-      const currSpace = await spaceContract.spaces(Number(spaceID));
+      const currSpace = await spaceContract.spaces(spaceID);
       console.log(currSpace);
       console.log(currSpace.exists);
 
       if (currSpace.exists) {
-        const exists = currSpace.exists;
-        const spaceNo = currSpace.spaceNo;
-
         const owner = currSpace.owner;
-        const _balance = await spaceContract.getRemainingBalance(
-          Number(spaceID)
-        );
+        const _balance = await spaceContract.getRemainingBalance(spaceID);
         let balance;
         if (Number(_balance) > 0) {
           balance = Number(
@@ -155,7 +151,7 @@ export default function Page() {
         </div>
 
         <h1 className="font-semibold text-2xl mb-6">
-          #{Number(spaceID) < 10 && "0"}
+          #{spaceID < 10 && "0"}
           {spaceID}
         </h1>
         <div className="flex flex-col gap-y-4">

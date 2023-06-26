@@ -29,7 +29,9 @@ export default function Space() {
 
       setAllBalances(_balances);
 
-      const allSpaces = await spaceContract.getAllClaimedSpaces();
+      const allSpaces = await spaceContract.getAllSpaces();
+      console.log(allSpaces);
+
       setAllSpaces(allSpaces);
     }
     loadSpaces();

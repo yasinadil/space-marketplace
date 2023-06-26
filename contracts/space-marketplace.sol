@@ -312,14 +312,14 @@ contract SpaceMarketPlace {
     }
 
     //off-chain function - not to be called onchain
-    function getAllClaimedSpaces() public view returns (Space[] memory) {
+    function getAllSpaces() public view returns (Space[] memory) {
         Space[] memory _spaces = new Space[](NUM_SPACES);
         uint256 index = 0;
         for (uint256 i = 1; i <= NUM_SPACES; i++) {
-            if (spaces[i].exists) {
+       
                 _spaces[index] = spaces[i];
                 index++;
-            }
+       
         }
         return _spaces;
     }
