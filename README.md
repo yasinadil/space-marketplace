@@ -1,6 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## SPACE MARKET
 
-## Getting Started
+Space Marketplace is a tool for financially sustainable coordination. Spaces are tradeable subscription memberships for DAOs. Space Marketplace replaces NFT or token DAO memberships with dynamically priced subscriptions that give each member skin in the game for incentive to build.
+
+Space owners who maintain a subscription balance are given the right to display their NFTs in the space as sponsors of the collective cause.
+
+The concept is an alternative to a Harberger Tax, inspired by a post from Vitalik Buterin on ENS.
+
+The first Space Marketplace to launch will be the Mothership. The goal of the Mothership DAO will be to develop and enhance the dApp code and to enable anyone to spawn their own Space Marketplace DAO with any coordination mission of their choosing.
 
 First, run the development server:
 
