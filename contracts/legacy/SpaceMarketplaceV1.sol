@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: MIT
+// Original (v1) contract, kept unmodified apart from the contract name so the
+// regression tests in test/V1Regressions.t.sol can demonstrate each bug fixed in v2.
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -7,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
 
-contract SpaceMarketPlace {
+contract SpaceMarketPlaceV1 {
     address public owner;
     address public receiver;
     uint256 public receiverBal;
